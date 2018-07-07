@@ -13,7 +13,11 @@ const sequelize = new Sequelize('dcjg03vqhumapp', 'shbctccqdekbzp', '05b6584ea35
 });
 
 const models = {
-    User: sequelize.import('./users')
+    User: sequelize.import('./users'),
+    Rol: sequelize.import('./rols'),
+    Empresa: sequelize.import('./empresas'),
+    Registro: sequelize.import('./registros'),
+    RedSocial: sequelize.import('redesSociales')
 }
 
 Object.keys(models).forEach(key => {
