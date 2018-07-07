@@ -163,6 +163,42 @@
           </li>
           <li class="breadcrumb-item active">My Dashboard</li>
         </ol>
+
+        <table class="table">
+          <thead>
+            <th>
+              id
+            </th>
+
+            <th>
+              Usuario
+            </th>
+
+            <th>
+              Empresa
+            </th>
+          </thead>
+
+          <tbody>
+            <% for (registro of registros) { %>
+              <tr>
+                <td>
+                  <%= registro.id %>
+                </td>
+
+                <td>
+                  Usuario
+                </td>
+
+                <td>
+                  Empresa
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
