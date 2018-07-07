@@ -47,19 +47,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-// var port = '3000';
-// app.set('port', port);
-
-// var server = http.createServer(app);
-
-
 models.sequelize.sync().then(() => {
   // server.listen(port);
   app.listen(3000, function() {
     console.log('En el puerto 3000');
   })
 });
-
-
-// module.exports = app;
