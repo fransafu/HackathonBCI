@@ -39,7 +39,7 @@ exports.create = (req, res) => {
                 }
             })
                 .then((empresa) => {
-                    db.sequelize.query('INSERT INTO registros(material_multimedia", "activo", "empresaId", "userId", "createdAt", "updatedAt") VALUES (:empresaId, :userId, :id_red_social, :created_at, :updated_at)',
+                    db.sequelize.query('INSERT INTO registros("material_multimedia", "activo", "empresaId", "userId", "createdAt", "updatedAt") VALUES (:material_multimedia, :activo, :empresaId, :userId, :created_at, :updated_at)',
                                        { replacements: {
                                            userId: 1,
                                            empresaId: empresa.id,
