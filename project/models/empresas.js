@@ -2,8 +2,8 @@ module.exports = (sequelize, Sequelize) => {
     const Empresa = sequelize.define('empresa', {
         id: {
             type: Sequelize.INTEGER,
-            anique: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         nombre: Sequelize.STRING,
         rubro: Sequelize.STRING,
