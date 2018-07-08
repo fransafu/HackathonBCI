@@ -32,7 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Definir rutas
-app.use('/', indexRouter);
+app.use('/', metricsRouter);
 app.use('/users', usersRouter);
 app.use('/metrics', metricsRouter);
 app.use('/registros', registrosRouter);
