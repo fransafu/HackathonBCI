@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
             anique: true,
             primaryKey: true
         },
-        tipo: Sequelize.STRING
+        tipo: Sequelize.STRING,
+        activo: Sequelize.BOOLEAN
     });
 
     Rol.associate = models => {

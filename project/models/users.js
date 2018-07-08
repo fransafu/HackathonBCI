@@ -10,7 +10,8 @@ module.exports = (sequelize, Sequelize) => {
         email: Sequelize.STRING,
         password: Sequelize.STRING,
         rol_id: Sequelize.INTEGER,
-        telefono: Sequelize.STRING
+        telefono: Sequelize.STRING,
+        activo: Sequelize.BOOLEAN
     });
 
     User.associate = models => {

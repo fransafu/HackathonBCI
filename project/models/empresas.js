@@ -13,7 +13,8 @@ module.exports = (sequelize, Sequelize) => {
         categoria: Sequelize.STRING,
         nombre_titular: Sequelize.STRING,
         telefono_titular: Sequelize.STRING,
-        email_titular: Sequelize.STRING
+        email_titular: Sequelize.STRING,
+        activo: Sequelize.BOOLEAN
     });
 
     Empresa.associate = models => {
