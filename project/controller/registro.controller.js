@@ -2,9 +2,10 @@ var db = require('../models');
 var Registro = db.registro;
 
 exports.read = (req, res) => {
-    return Registro.findAll()
+    return Registro.findAll({where: {activo: true}})
         .then(registros => {
-            res.render('registros', { registros: [] });
+            console.log('REGISTROS:' + registros)
+            res.render('registros', { registros: registros, registro_borrado: null });
         })
 }
 
@@ -12,13 +13,13 @@ exports.create = (req, res) => {
     let body = req.body;
     if (body) {
         return Registro.create(body)
-        .then(result => {
-            res.json({"result": result});
-        })
+            .then(result => {
+                res.json({"result": result});
+            })
     } else {
         res.json({"result": "no data"});
     }
-    
+
 }
 
 exports.findById = (req, res) => {
@@ -28,9 +29,9 @@ exports.findById = (req, res) => {
             id: id
         }
     })
-    .then(registro => {
-        res.json({"registro": registro});
-    })
+        .then(registro => {
+            res.json({"registro": registro});
+        })
 
 }
 
@@ -38,7 +39,7 @@ exports.update = (req, res) => {
     let id = req.params.id;
     return Registro.update(
         {
-// Falta competar!!
+            // Falta competar!!
         },
         {
             where: {
@@ -46,9 +47,9 @@ exports.update = (req, res) => {
             }
         }
     )
-    .then(filasActualizadas => {
-        res.json({"filasActualizadas": filasActualizadas});
-    })
+        .then(filasActualizadas => {
+            res.json({"filasActualizadas": filasActualizadas});
+        })
 }
 
 exports.delete = (req, res) => {
@@ -59,7 +60,11 @@ exports.delete = (req, res) => {
         },
         { where: { id: id } }
     )
-    .then(resultado => {
-        res.json({"resultado": resultado});
-    })
+        .then(resultado => {
+            Registro
+                .findAll({where: {activo: true}})
+                .then(registros =>
+                      res.render('registros', { registros: registros,
+                                                registro_borrado: id}));
+        });
 }
