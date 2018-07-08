@@ -3,11 +3,11 @@ var Registro = db.registro;
 
 exports.read = (req, res) => {
     return Registro.findAll(
-        {include: [
-            {model: db.user},
-            {model: db.empresa}
-        ]},
-        {where: {activo: true}}
+        {where: {activo: true},
+         include: [
+             {model: db.user},
+             {model: db.empresa}
+         ]}
         )
         .then(registros => {
             res.render('registros', { registros: registros, registro_borrado: null });
@@ -16,7 +16,6 @@ exports.read = (req, res) => {
 
 exports.create = (req, res) => {
     let body = req.body;
-    console.log(body);
     /* body = {
         "id_usuario": 3,
         "userId": 3,
@@ -65,22 +64,23 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     let id = req.params.id;
     return Registro.update(
-        { activo: 0 },
+        { activo: false },
         { where: { id: id } }
     )
         .then(resultado => {
             Registro
                 .findAll(
-                    {include: [
+                    {where: {activo: true},
+                     include: [
                         {model: db.user},
-                        {model: db.empresa}
-                    ]}),
-            {where: {activo: true}}
-                .then(registros => {
-                    console.log(registros);
-                    res.render('registros', { registros: registros,
-                                              registro_borrado: id});
-                }
-                     );
+                        {model: db.empresa}]
+                    }
+                )
+
+              .then(registros => {
+                  res.render('registros', { registros: registros,
+                                            registro_borrado: id});
+              }
+                   );
         });
 }
