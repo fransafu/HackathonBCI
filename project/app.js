@@ -13,6 +13,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics');
 var registrosRouter = require('./routes/registros');
+var empresaRouter = require('./routes/empresas');
 var uploadRouter = require('./routes/upload');
 
 var seeder = require('./models/seeder');
@@ -35,6 +36,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/metrics', metricsRouter);
 app.use('/registros', registrosRouter);
+app.use('/empresas', empresaRouter);
 app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
