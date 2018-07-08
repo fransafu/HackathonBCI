@@ -7,7 +7,6 @@ exports.findById = (req, res) => {
             console.log(data);
             res.send(data);
         })
-        //res.json({"Estado": "ok"});
 }
 
 exports.update = (req, res) => {
