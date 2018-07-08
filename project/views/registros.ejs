@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include('partials/head'); -%>
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    <%- include('partials/nav') -%>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+
+        <table class="table">
+          <thead>
+            <th>
+              id
+            </th>
+
+            <th>
+              Usuario
+            </th>
+
+            <th>
+              Empresa
+            </th>
+          </thead>
+
+          <tbody>
+            <% for (registro of registros) { %>
+              <tr>
+                <td>
+                  <%= registro.id %>
+                </td>
+
+                <td>
+                  <%= registro.getUser().name %>
+                </td>
+
+                <td>
+                  Empresa
+                </td>
+                <td>
+                  Empresa
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <%- include('partials/footer'); %>
+        <%- include('partials/logout-modal'); %>
+        <%- include('partials/scripts'); %>
+      </div>
+  </body>
+</html>

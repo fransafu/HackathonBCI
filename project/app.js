@@ -12,6 +12,7 @@ var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics');
+var registrosRouter = require('./routes/registros');
 var uploadFile = require('./routes/upload');
 
 var seeder = require('./models/seeder');
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/metrics', metricsRouter);
+app.use('/registros', registrosRouter);
 app.use('/upload', uploadFile);
 
 // catch 404 and forward to error handler
