@@ -64,7 +64,11 @@ exports.seedUser = () => {
             activo: true
         }
     ])
-    .then(result => console.log(result));
+    .then(result => {
+        result.forEach(element => {
+            console.log(element.getId);
+        });    
+    });
 }
 
 exports.seedEmpresas = () => {

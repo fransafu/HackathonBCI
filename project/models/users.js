@@ -12,6 +12,14 @@ module.exports = (sequelize, Sequelize) => {
         rol_id: Sequelize.INTEGER,
         telefono: Sequelize.STRING,
         activo: Sequelize.BOOLEAN
+    }, {
+        getterMethods: {
+            getId() {
+                return {
+                    id: this.id
+                }
+            }
+        }
     });
 
     User.associate = models => {

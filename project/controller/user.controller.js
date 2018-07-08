@@ -20,6 +20,7 @@ exports.findById = (req, res) => {
 
 exports.create = (req, res) => {
     let body = req.body;
+
     if (body) {
         return User.create(body)
             .then(result => {
@@ -32,9 +33,9 @@ exports.create = (req, res) => {
 
 exports.update = (req, res) => {
     let id = req.params.id;
-    return User.update({
-        // Falta completar!!!
-    }, {
+    let body = req.body;
+
+    return User.update(body, {
         where: { id: id }
     })
     .then(result => {

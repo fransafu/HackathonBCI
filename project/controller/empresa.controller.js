@@ -32,9 +32,8 @@ exports.create = (req, res) => {
 
 exports.update = (req, res) => {
     let id = req.params.id;
-    return Empresa.update({
-        // Falta completar!!!
-    }, {
+    let body = req.body;
+    return Empresa.update(body, {
         where: { id: id }
     })
     .then(result => {
