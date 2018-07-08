@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node app.js --presets es2015"
+    "build": "babel --ignore node_modules -d ./build ./",
+    "prebuild": "rm -rf build/* && npm install",
+    "start": "NODE_ENV=production node ./build/app.js",
+    "develop": "babel-node app.js --presets es2015",
+    "prestart": "npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
