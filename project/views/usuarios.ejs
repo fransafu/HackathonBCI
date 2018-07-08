@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include('partials/head'); -%>
+
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    <%- include('partials/nav') -%>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <table class="table">
+          <thead>
+            <th>
+              id
+            </th>
+
+            <th>
+              nombre
+            </th>
+
+            <th>
+              appellido
+            </th>
+
+            <th>
+              telefono
+            </th>
+
+            <th>
+              rol
+            </th>
+          </thead>
+
+          <tbody>
+            <% for (usuario of users) { %>
+              <tr>
+                <td>
+                  <%= usuario.id %>
+                </td>
+
+                <td>
+                  <%= usuario.nombre %>
+                </td>
+
+                <td>
+                  <%= usuario.apellido %>
+                </td>
+
+                <td>
+                    <%= usuario.telefono %>
+                </td>
+
+                <td>
+                    <%= usuario.rol.tipo %>
+                </td>
+
+                <td>
+                    <!-- <a href=<%= "/users/patch/"  + usuario.id%>> Actualizar </a> -->
+                    <a href=<%= "/users/delete/"  + usuario.id%>> Eliminar </a>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+
+        <%- include('partials/footer'); %>
+        <%- include('partials/logout-modal'); %>
+        <%- include('partials/scripts'); %>
+      </div>
+  </body>
+</html>

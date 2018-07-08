@@ -2,9 +2,12 @@ var db = require('../models');
 var User = db.user;
 
 exports.read = (req, res) => {
-    return User.findAll()
+    return User.findAll({include: [
+        {model: db.rol}
+    ]})
     .then(users => {
-        res.send('usuarios', { users: users });
+        // res.json({users: users})
+        res.render('usuarios', { users: users });
     })
 }
 
