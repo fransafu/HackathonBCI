@@ -14,6 +14,10 @@ exports.read = (req, res) => {
         })
 }
 
+exports.new = (req, res) => {
+    res.render('registros_new');
+}
+
 exports.create = (req, res) => {
     let body = req.body;
     /* body = {
@@ -30,7 +34,8 @@ exports.create = (req, res) => {
                 res.json({"result": result});
             })
     } else {
-        res.json({"result": "no data"});
+        res.render('registros_new');
+        // res.json({"result": "no data"});
     }
 }
 

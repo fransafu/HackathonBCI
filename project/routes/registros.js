@@ -8,7 +8,8 @@ var registroController = require('../controller/registro.controller');
 router.get('/', registroController.read);
 
 // CREATE
-router.post('/', registroController.create);
+router.get('/new', registroController.new);
+router.post('/create', registroController.create);
 
 // Find specific id
 router.get('/:id', registroController.findById);

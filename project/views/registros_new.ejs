@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <%- include('partials/head'); -%>
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    <%- include('partials/nav') -%>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <h2>
+          Nuevo Registro
+        </h2>
+
+        <form method="post" action="/registros/create">
+          <label>
+            Nombre Empresa
+          </label>
+          <input type="text" name="empresa_name">
+
+          <br>
+
+          <label>
+            Contenido Multimedia
+          </label>
+          <input type="file" name="material_multimedia">
+
+          <br>
+          <button type="submit" class="btn btn-primary">
+            Crear
+          </button>
+        </form>
+
+      </div>
+    </div>
+    </div>
+
+    <%- include('partials/footer'); %>
+    <%- include('partials/logout-modal'); %>
+    <%- include('partials/scripts'); %>
+
+    </div>
+  </body>
+
+</html>

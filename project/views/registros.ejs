@@ -10,9 +10,22 @@
     <div class="content-wrapper">
       <div class="container-fluid">
 
-        <% if (registro_borrado) { %>
-          <%= "El registro " + registro_borrado.id + " fue eliminado" %>
+        <% if (registro_borrado != null) { %>
+          <%= "El registro fue eliminado" %>
+          <br>
+          <br>
         <% } %>
+
+        <a href="/registros/new" class="btn btn-primary">
+          Nuevo registro
+        </a>
+
+        <br>
+        <br>
+
+        <h2>
+          Registros
+        </h2>
 
         <table class="table">
           <thead>
@@ -53,7 +66,7 @@
                 </td>
 
                 <td>
-                  <a href="#">
+                  <a href="/public/<%= registro.material_multimedia%>">
                     Descargar
                   </a>
                 </td>
