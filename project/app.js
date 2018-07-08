@@ -13,7 +13,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics');
 var registrosRouter = require('./routes/registros');
-var uploadFile = require('./routes/upload');
+var uploadRouter = require('./routes/upload');
 
 // default options for fileUpload
 app.use(fileUpload());
@@ -33,7 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/metrics', metricsRouter);
 app.use('/registros', registrosRouter);
-app.use('/upload', uploadFile);
+app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
