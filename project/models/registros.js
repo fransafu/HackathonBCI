@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
         },
         id_usuario: Sequelize.INTEGER,
         id_empresa: Sequelize.INTEGER,
-        material_multimedia: Sequelize.STRING
+        material_multimedia: Sequelize.STRING,
+        activo: Sequelize.BOOLEAN
     });
 
     Registro.associate = models => {

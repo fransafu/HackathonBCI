@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
         },
         url: Sequelize.STRING,
         tipo: Sequelize.STRING,
-        nombre: Sequelize.STRING
+        nombre: Sequelize.STRING,
+        activo: Sequelize.BOOLEAN
     });
 
     RedSocial.associate = models => {
