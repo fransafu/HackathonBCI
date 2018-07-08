@@ -1,26 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var registroController = require('../controller/registro.controller');
 
-// CREATE
-router.post('/', function(req, res) {
-});
+
 
 // READ
-router.get('/', function(req, res, next) {
-  res.render('registros', { registros: [] });
-});
+router.get('/', registroController.read);
 
-router.get('/:id', function(req, res, next) {
-});
+// CREATE
+router.post('/', registroController.create);
 
+// Find specific id
+router.get('/:id', registroController.findById);
 
 // UPDATE
-router.put('/:id', function(req, res) {
-});
+router.put('/:id', registroController.update);
 
 // DELETE
-router.delete('/:id', function(req, res) {
-});
-
+router.delete('/:id', registroController.delete);
 
 module.exports = router;

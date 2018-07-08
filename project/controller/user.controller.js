@@ -1,4 +1,4 @@
-var db = require('../../models');
+var db = require('../models');
 var User = db.user;
 
 exports.findAll = (req, res) => {
