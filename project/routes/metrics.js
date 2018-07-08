@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
       .then(resultCategoria => {
         querySelect(`select 
             r.id, 
-            u.nombre, u.apellido, e.nombre, e.pagina_web
+            u.nombre as nombre_ejecutivo, u.apellido, e.nombre as nombre_empresa, e.pagina_web
           from registros as r
           inner join users as u on r."userId" = u.id
           inner join rols on u."rolId" = rols.id
