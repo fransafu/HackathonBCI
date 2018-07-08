@@ -54,7 +54,7 @@ app.use(function(err, req, res, next) {
 });
 
 models.sequelize.sync().then(() => {
-  app.listen(3000, function() {
+  app.listen(8080, function() {
     console.log('Servidor disponible en el puerto 3000');
     /* console.log('Haciendo seeder');
     seeder.seedRol();
