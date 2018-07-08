@@ -29,6 +29,10 @@
             </th>
 
             <th>
+              Archivo
+            </th>
+
+            <th>
               Acciones
             </th>
           </thead>
@@ -41,17 +45,25 @@
                 </td>
 
                 <td>
-                  <%= registro.getUser().name %>
+                  <%= registro.user.nombre %>
                 </td>
 
                 <td>
-                  <%= registro.getEmpresa().name %>
+                  <%= registro.empresa.nombre %>
+                </td>
+
+                <td>
+                  <a href="#">
+                    Descargar
+                  </a>
                 </td>
 
                 <td>
                   <a href=<%= "/registros/delete/"  + registro.id%>>
                     Eliminar
                   </a>
+
+                  <a href="<%= %>">
                 </td>
               </tr>
             <% } %>

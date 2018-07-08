@@ -4,7 +4,7 @@ var User = db.user;
 exports.read = (req, res) => {
     return User.findAll()
     .then(users => {
-        res.send('template', { users: users });
+        res.send('usuarios', { users: users });
     })
 }
 
