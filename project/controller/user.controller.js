@@ -1,45 +1,55 @@
 var db = require('../models');
 var User = db.user;
 
-exports.findAll = (req, res) => {
-    User.findAll()
-        .then(users => {
-
-        })
+exports.read = (req, res) => {
+    return User.findAll()
+    .then(users => {
+        res.send('template', { users: users });
+    })
 }
 
 exports.findById = (req, res) => {
-    User.findOne()
-        .then((data) => {
-            console.log(data);
-            res.send(data);
-        })
+    let id = req.params.id;
+    return User.find({
+        where: { id: id }
+    })
+    .then((user) => {
+        res.send('template', { user: user });
+    })
+}
+
+exports.create = (req, res) => {
+    let body = req.body;
+    if (body) {
+        return User.create(body)
+            .then(result => {
+                res.send('template', { result: result });
+            })
+    } else {
+        res.send('template', { result: [] });
+    }
 }
 
 exports.update = (req, res) => {
-    User.update({
-        campo1: "dato"
+    let id = req.params.id;
+    return User.update({
+        // Falta completar!!!
     }, {
-        where: {
-            id: req.params.id
-        }
+        where: { id: id }
     })
-    .then(() => {
-        res.json({"estado": "ok", "mensaje": "Actualizacion realizada con exito"});
-    })
-    .catch(err => res.json({"estado": "error", "mensaje": "Ocurrio un error mientras se ejecutaba al actualizacion"}));
+    .then(result => {
+        res.send('template', { result: result });
+    });
 }
 
 exports.delete = (req, res) => {
+    let id = req.params.id;
     User.update({
         activo: false
     }, {
-        where: {
-            id: req.params.id
-        }
+        where: { id: id }
     })
-    .then(() => {
-        res.json({"estado": "ok", "mensaje": "Actualizacion realizada con exito"});
-    })
-    .catch(err => res.json({"estado": "error", "mensaje": "Ocurrio un error mientras se ejecutaba al actualizacion"}));
+    .then(result => {
+        res.send('template', { result: result });
+    });
 }

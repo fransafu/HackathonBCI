@@ -2,15 +2,19 @@ var express = require('express');
 var router = express.Router();
 var userController = require('../controller/user.controller');
 
-/* GET index users */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// index
+router.get('/', userController.read);
+
 // Get specific user by id
-router.get('/find/:id', userController.findById);
-// Update user
-router.put('/update/:id', userController.update);
-// Delete user
-router.delete('/delete/:id', userController.delete);
+router.get('/:id', userController.findById);
+
+// Create
+router.post('/')
+
+// Update
+router.put('/:id', userController.update);
+
+// Delete
+router.delete('/:id', userController.delete);
 
 module.exports = router;
