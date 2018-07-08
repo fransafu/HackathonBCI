@@ -14,6 +14,8 @@ var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics');
 var uploadFile = require('./routes/upload');
 
+var seeder = require('./models/seeder');
+
 // default options for fileUpload
 app.use(fileUpload());
 
@@ -52,5 +54,9 @@ app.use(function(err, req, res, next) {
 models.sequelize.sync().then(() => {
   app.listen(3000, function() {
     console.log('Servidor disponible en el puerto 3000');
+    /* console.log('Haciendo seeder');
+    seeder.seedRol();
+    seeder.seedUser();
+    seeder.seedEmpresas(); */
   })
 });

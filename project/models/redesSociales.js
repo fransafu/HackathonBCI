@@ -2,8 +2,8 @@ module.exports = (sequelize, Sequelize) => {
     const RedSocial = sequelize.define('red_social', {
         id: {
             type: Sequelize.INTEGER,
-            anique: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         url: Sequelize.STRING,
         tipo: Sequelize.STRING,
