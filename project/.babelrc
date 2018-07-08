@@ -5,6 +5,7 @@
     "manifest.yml",
     "public",
     "html",
-    "dist"
+    "dist",
+    "vendor"
   ]
 }
