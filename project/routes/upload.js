@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 
- 
 router.post('/upload', function(req, res) {
   console.log(req.files);
   if (!req.files)
@@ -20,4 +19,7 @@ router.post('/upload', function(req, res) {
   });
 });
 
+ router.get('/', function(req, res, next) {
+  res.render('upload');
+});
 module.exports = router;

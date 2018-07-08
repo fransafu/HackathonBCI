@@ -2,15 +2,20 @@
 <html>
   <head>
     <%- include('partials/head') -%>
+ <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
-    <title>Metricas</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div class="container">
-      <h1>
-        Metricas
-      </h1>
-    </div>
+    <%- include('partials/nav') -%>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+            <h1>Metricas</h1>
+        <%- include('partials/footer'); %>
+        <%- include('partials/logout-modal'); %>
+        <%- include('partials/scripts'); %>
+      </div>
+    </tbody>
+        <%- include('partials/footer'); %>
+        <%- include('partials/logout-modal'); %>
+        <%- include('partials/scripts'); %>
+    
   </body>
 </html>
