@@ -1,21 +1,81 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <%- include('partials/head') -%>
- <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<html lang="en">
+
+  <%- include('partials/head'); -%>
+
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
     <%- include('partials/nav') -%>
-        <div class="content-wrapper">
-            <div class="container-fluid">
-            <h1>Metricas</h1>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-info o-hidden h-100">
+                  <div class="card-body">
+                    <div class="card-body-icon">
+                    </div>
+                    <div class="mr-5">Total Empresa: <%= resultCount.empresas_total %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="card text-white bg-info o-hidden h-100">
+                  <div class="card-body">
+                    <div class="card-body-icon">
+                      <i class="fa fa-fw fa-list"></i>
+                    </div>
+                    <div class="mr-5">Total Usuario: <%= resultCount.usuarios_total %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <h3>Ultimos registros</h3>
+              <table class="table">
+                  <thead> 
+                    <th>ID registro</th>
+                    <th>Nombre ejecutivo</th>
+                    <th>Nombre empresa</th>
+                    <th>Sitio web</th>
+                  </thead>
+        
+                  <tbody>
+                    <% for (ultimaVenta of resultUltimasVentas) { %>
+                      <tr>
+                        <td><%= ultimaVenta.id %></td>
+                        <td><%= ultimaVenta.nombre_ejecutivo %> <%= ultimaVenta.apellido %></td>
+                        <td><%= ultimaVenta.nombre_empresa %></td>
+                        <td><%= ultimaVenta.pagina_web %></td>
+                      </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <h3>Estadisticas por ejecutivo</h3>
+                <table class="table">
+                    <thead> 
+                      <th>ID registro</th>
+                      <th>Nombre ejecutivo</th>
+                      <th>Total de ingresos</th>
+                    </thead>
+          
+                    <tbody>
+                      <% for (statsVentas of resultStatsVentas) { %>
+                        <tr>
+                          <td><%= statsVentas.id %></td>
+                          <td><%= statsVentas.nombre %> <%= statsVentas.apellido %></td>
+                          <td><%= statsVentas.contador %></td>
+                        </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+              </div>
+
         <%- include('partials/footer'); %>
         <%- include('partials/logout-modal'); %>
         <%- include('partials/scripts'); %>
       </div>
-    </tbody>
-        <%- include('partials/footer'); %>
-        <%- include('partials/logout-modal'); %>
-        <%- include('partials/scripts'); %>
-    
   </body>
 </html>
