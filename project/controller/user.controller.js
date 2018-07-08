@@ -6,7 +6,6 @@ exports.read = (req, res) => {
         {model: db.rol}
     ]})
     .then(users => {
-        // res.json({users: users})
         res.render('usuarios', { users: users });
     })
 }

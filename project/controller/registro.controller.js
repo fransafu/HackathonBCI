@@ -27,9 +27,17 @@ exports.create = (req, res) => {
 
     let file = req.files.material_multimedia;
 
-    User.findById(1)
+    User.findById({
+        where: {
+            id: 1
+        }
+    })
         .then((user) => {
-            Empresa.findById(req.body.empresa_id)
+            Empresa.findById({
+                where: {
+                    id: req.body.empresa_id
+                }
+            })
                 .then((empresa) => {
                     Registro.create({material_multimedia: file.name,
                                      empresa:empresa,
