@@ -1,13 +1,19 @@
-const Empresa = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const Empresa = sequelize.define('empresa', {
         id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             anique: true,
             primaryKey: true
         },
-        id_usuario: DataTypes.INTEGER,
-        id_empresa: DataTypes.INTEGER,
-        material_multimedia: DataTypes.STRING
+        nombre: Sequelize.STRING,
+        rubro: Sequelize.STRING,
+        rut: Sequelize.STRING,
+        pagina_web: Sequelize.STRING,
+        descripcion: Sequelize.TEXT,
+        categoria: Sequelize.STRING,
+        nombre_titular: Sequelize.STRING,
+        telefono_titular: Sequelize.STRING,
+        email_titular: Sequelize.STRING
     });
 
     Empresa.associate = models => {
@@ -16,5 +22,3 @@ const Empresa = (sequelize, DataTypes) => {
     }
     return Empresa;
 };
-
-export default Empresa;

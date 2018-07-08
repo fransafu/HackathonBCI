@@ -1,11 +1,11 @@
-const Rol = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const Rol = sequelize.define('rol', {
         id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             anique: true,
             primaryKey: true
         },
-        tipo: DataTypes.STRING
+        tipo: Sequelize.STRING
     });
 
     Rol.associate = models => {
@@ -13,5 +13,3 @@ const Rol = (sequelize, DataTypes) => {
     }
     return Rol;
 };
-
-export default Rol;

@@ -1,13 +1,13 @@
-const RedSocial = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const RedSocial = sequelize.define('red_social', {
         id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             anique: true,
             primaryKey: true
         },
-        id_usuario: DataTypes.INTEGER,
-        id_empresa: DataTypes.INTEGER,
-        material_multimedia: DataTypes.STRING
+        url: Sequelize.STRING,
+        tipo: Sequelize.STRING,
+        nombre: Sequelize.STRING
     });
 
     RedSocial.associate = models => {
@@ -15,5 +15,3 @@ const RedSocial = (sequelize, DataTypes) => {
     }
     return RedSocial;
 };
-
-export default RedSocial;

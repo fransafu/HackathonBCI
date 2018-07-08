@@ -1,13 +1,13 @@
-const Registro = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const Registro = sequelize.define('registro', {
         id: {
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             anique: true,
             primaryKey: true
         },
-        id_usuario: DataTypes.INTEGER,
-        id_empresa: DataTypes.INTEGER,
-        material_multimedia: DataTypes.STRING
+        id_usuario: Sequelize.INTEGER,
+        id_empresa: Sequelize.INTEGER,
+        material_multimedia: Sequelize.STRING
     });
 
     Registro.associate = models => {
@@ -16,5 +16,3 @@ const Registro = (sequelize, DataTypes) => {
     }
     return Registro;
 };
-
-export default Registro;

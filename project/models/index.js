@@ -12,21 +12,34 @@ const sequelize = new Sequelize('dcjg03vqhumapp', 'shbctccqdekbzp', '05b6584ea35
     ssl: true
 });
 
-const models = {
-    User: sequelize.import('./users'),
-    Rol: sequelize.import('./rols'),
-    Empresa: sequelize.import('./empresas'),
-    Registro: sequelize.import('./registros'),
-    RedSocial: sequelize.import('redesSociales')
-}
+const db = {};
 
-Object.keys(models).forEach(key => {
-    if ('associate' in models[key]) {
-        models[key].associate(models);
-    }
-});
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-models.sequelize = sequelize;
-models.Sequelize = Sequelize;
+db.user = require('./users')(sequelize, Sequelize);
+db.rol = require('./rols')(sequelize, Sequelize);
+db.empresa = require('./empresas')(sequelize, Sequelize);
+db.registro = require('./registros')(sequelize, Sequelize);
+db.redsocial = require('./redesSociales')(sequelize, Sequelize);
 
-export default models;
+// User
+db.user.belongsTo(db.rol);
+db.user.hasMany(db.registro);
+
+// Rol
+db.rol.hasMany(db.user);
+
+// Registro
+db.registro.belongsTo(db.user);
+db.registro.belongsTo(db.empresa);
+
+// Empresa
+db.empresa.belongsToMany(db.redsocial, { through: 'empresa_red_social' });
+db.empresa.hasMany(db.registro);
+
+//  Red Social
+db.redsocial.belongsToMany(db.empresa, { through: 'empresa_red_social' });
+
+// export default models;
+module.exports = db;
