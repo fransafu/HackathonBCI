@@ -9,6 +9,15 @@
 
     <div class="content-wrapper">
       <div class="container-fluid">
+
+        <a href="#" class="btn btn-primary">
+          Nuevo Usuario
+        </a>
+
+        <br>
+
+        <br>
+
         <table class="table">
           <thead>
             <th>
@@ -58,6 +67,12 @@
                 <td>
                     <!-- <a href=<%= "/users/patch/"  + usuario.id%>> Actualizar </a> -->
                     <a href=<%= "/users/delete/"  + usuario.id%>> Eliminar </a>
+                </td>
+
+                <td>
+                  <a href="#">
+                    Editar
+                  </a>
                 </td>
               </tr>
             <% } %>
