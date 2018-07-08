@@ -74,3 +74,4 @@ typings/
 
 # files
 package-lock.json
+build/
