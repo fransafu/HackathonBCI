@@ -27,25 +27,37 @@ exports.create = (req, res) => {
 
     let file = req.files.material_multimedia;
 
-    User.findById({
+    User.find({
         where: {
             id: 1
         }
     })
         .then((user) => {
-            Empresa.findById({
+            Empresa.find({
                 where: {
-                    id: req.body.empresa_id
+                    id: 1
                 }
             })
                 .then((empresa) => {
-                    Registro.create({material_multimedia: file.name,
-                                     empresa:empresa,
-                                     user: user,
-                                     activo: true})
-                        .then(res.redirect('/registros'));
+                    db.sequelize.query('INSERT INTO registros(material_multimedia", "activo", "empresaId", "userId", "createdAt", "updatedAt") VALUES (:empresaId, :userId, :id_red_social, :created_at, :updated_at)',
+                                       { replacements: {
+                                           userId: 1,
+                                           empresaId: empresa.id,
+                                           material_multimedia: file.name,
+                                           activo: true,
+                                           created_at: new Date(),
+                                           updated_at: new Date()
+                                       }, type: db.sequelize.QueryTypes.SELECT }
+                                      )
+                    .then(() => res.redirect('/registros')) ;
+
+                    // Registro.create({material_multimedia: file.name,
+                    //                  empresaId: empresa.id,
+                    //                  userId: user.id,
+                    //                  activo: true})
+                    //     .then(res.redirect('/registros'));
                 });
-        })
+        });
 
 
     // let body = req.body;
