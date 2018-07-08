@@ -3,11 +3,11 @@ var Registro = db.registro;
 
 exports.read = (req, res) => {
     return Registro.findAll(
-        {where: {activo: true}},
         {include: [
             {model: db.user},
             {model: db.empresa}
-        ]}
+        ]},
+        {where: {activo: true}}
         )
         .then(registros => {
             res.render('registros', { registros: registros, registro_borrado: null });
@@ -71,11 +71,11 @@ exports.delete = (req, res) => {
         .then(resultado => {
             Registro
                 .findAll(
-                    {where: {activo: true}},
                     {include: [
                         {model: db.user},
                         {model: db.empresa}
-                    ]})
+                    ]}),
+            {where: {activo: true}}
                 .then(registros => {
                     console.log(registros);
                     res.render('registros', { registros: registros,
