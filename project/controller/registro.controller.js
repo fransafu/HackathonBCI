@@ -2,15 +2,10 @@ var db = require('../models');
 var Registro = db.registro;
 
 exports.read = (req, res) => {
-    return Registro.findAll({
-        include: [
-            { model: db.user },
-            { model: db.empresa }
-        ]
-    })
+    return Registro.findAll({where: {activo: true}})
         .then(registros => {
-            res.json({registros: registros});
-            // res.render('registros', { registros: [] });
+            console.log('REGISTROS:' + registros)
+            res.render('registros', { registros: registros, registro_borrado: null });
         })
 }
 
@@ -27,9 +22,9 @@ exports.create = (req, res) => {
     } */
     if (body) {
         return Registro.create(body)
-        .then(result => {
-            res.json({"result": result});
-        })
+            .then(result => {
+                res.json({"result": result});
+            })
     } else {
         res.json({"result": "no data"});
     }
@@ -45,9 +40,9 @@ exports.findById = (req, res) => {
     },{
         where: { id: id }
     })
-    .then(registro => {
-        res.json({"registro": registro});
-    })
+        .then(registro => {
+            res.json({"registro": registro});
+        })
 
 }
 
@@ -57,9 +52,9 @@ exports.update = (req, res) => {
     return Registro.update(body,
         { where: { id: id } }
     )
-    .then(result => {
-        res.json({result: result});
-    })
+        .then(result => {
+            res.json({result: result});
+        })
 }
 
 exports.delete = (req, res) => {
@@ -68,7 +63,11 @@ exports.delete = (req, res) => {
         { activo: 0 },
         { where: { id: id } }
     )
-    .then(result => {
-        res.json({ result: result});
-    })
+        .then(resultado => {
+            Registro
+                .findAll({where: {activo: true}})
+                .then(registros =>
+                      res.render('registros', { registros: registros,
+                                                registro_borrado: id}));
+        });
 }

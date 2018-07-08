@@ -17,6 +17,6 @@ router.get('/:id', registroController.findById);
 router.put('/:id', registroController.update);
 
 // DELETE
-router.delete('/:id', registroController.delete);
+router.get('/delete/:id', registroController.delete);
 
 module.exports = router;

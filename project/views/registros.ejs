@@ -10,6 +10,10 @@
     <div class="content-wrapper">
       <div class="container-fluid">
 
+        <% if (registro_borrado) { %>
+          <%= "El registro " + registro_borrado.id + " fue eliminado" %>
+        <% } %>
+
         <table class="table">
           <thead>
             <th>
@@ -22,6 +26,10 @@
 
             <th>
               Empresa
+            </th>
+
+            <th>
+              Acciones
             </th>
           </thead>
 
@@ -37,10 +45,13 @@
                 </td>
 
                 <td>
-                  Empresa
+                  <%= registro.getEmpresa().name %>
                 </td>
+
                 <td>
-                  Empresa
+                  <a href=<%= "/registros/delete/"  + registro.id%>>
+                    Eliminar
+                  </a>
                 </td>
               </tr>
             <% } %>
