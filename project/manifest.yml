@@ -1,6 +1,6 @@
 applications:
 - path: .
-  memory: 550M
+  memory: 460M
   instances: 1
   domain: mybluemix.net
   name: hackathonbci
