@@ -1,5 +1,7 @@
 var http = require('http');
 var createError = require('http-errors');
+const fileUpload = require('express-fileupload');
+
 // var express = require('express');
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -12,8 +14,11 @@ import models from './models';
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var metricsRouter = require('./routes/metrics');
-
+var uploadFile = require('./routes/upload');
 var app = express();
+
+// default options
+app.use(fileUpload());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/metrics', metricsRouter);
+app.use('/upload', uploadFile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

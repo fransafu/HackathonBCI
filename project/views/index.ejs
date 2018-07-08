@@ -186,7 +186,16 @@
           </li>
           <li class="breadcrumb-item active">My Dashboard</li>
         </ol>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">
+        <form ref='uploadForm' 
+          id='uploadForm' 
+          action='http://localhost:3000/upload' 
+          method='post' 
+          encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+        </form>   
+        </div>
         </div>
       </div>
 
