@@ -1,6 +1,7 @@
 var db = require('../models');
 var Registro = db.registro;
 var Empresa = db.empresa;
+var User = db.user;
 
 exports.read = (req, res) => {
     return Registro.findAll(
@@ -16,7 +17,8 @@ exports.read = (req, res) => {
 }
 
 exports.new = (req, res) => {
-    res.render('registros_new');
+    Empresa.findAll()
+        .then(empresas => res.render('registros_new', {empresas: empresas}));
 }
 
 exports.create = (req, res) => {
@@ -25,14 +27,17 @@ exports.create = (req, res) => {
 
     let file = req.files.material_multimedia;
 
-    Empresa.create({nombre: req.body.empresa_name})
-        .then((empresa) => {
-            Registro.create({material_multimedia:
-                            file.name, id_empresa:
-                             empresa.id, id_usuario: 1,
-                             activo: true})
-                .then(res.redirect('/registros'));
-        });
+    User.findById(1)
+        .then((user) => {
+            Empresa.findById(req.body.empresa_id)
+                .then((empresa) => {
+                    Registro.create({material_multimedia: file.name,
+                                     empresa:empresa,
+                                     user: user,
+                                     activo: true})
+                        .then(res.redirect('/registros'));
+                });
+        })
 
 
     // let body = req.body;
