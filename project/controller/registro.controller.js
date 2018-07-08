@@ -10,7 +10,6 @@ exports.read = (req, res) => {
         ]}
         )
         .then(registros => {
-            console.log('REGISTROS:' + registros)
             res.render('registros', { registros: registros, registro_borrado: null });
         })
 }
